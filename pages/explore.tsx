@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { Category } from "../typings";
+import { sanityClient } from "../sanity";
 import Head from "next/head";
 import Layout1 from "../components/layouts/Layout1";
 import GridCate from "../components/cards/GridCate";
@@ -36,9 +37,12 @@ export default function explore({ categories }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const { categories } = await (
-        await fetch("http://localhost:3000/api/categories")
-    ).json();
+    // all categories
+    let categories = await sanityClient.fetch(`*[_type == "category"] {
+        title,
+        image,
+        description
+    }`);
 
     return {
         props: {
