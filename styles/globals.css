@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.full-bleed {
+    box-shadow: 0 0 0 100vmax #000;
+    clip-path: inset(0 -100vmax);
+}
+
+@layer components {
+    .post-info-holder {
+        @apply flex items-center h-fit space-x-2
+    }
+}
