@@ -1,19 +1,19 @@
 export interface Post {
     _id: string;
-    publishedAt?: string;
     title: string;
+    slug: {
+        current: string;
+    };
+    publishedAt?: string;
+    description?: string;
     author?: {
         name: string;
         image: string;
     };
-    description?: string;
-    mainImage: {
+    mainImage?: {
         asset: {
             url?: string;
         };
-    };
-    slug: {
-        current: string;
     };
     body?: [object];
     likeCount?: number;

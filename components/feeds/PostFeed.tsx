@@ -8,12 +8,12 @@ interface Props {
 }
 
 export default function PostFeed({ posts }: Props) {
-    const [allPosts, setAllPosts] = React.useState<Post[]>([...posts]);
-
+    const [allPosts, setAllPosts] = React.useState<Post[]>(posts && [...posts]);
+    
     return (
         <div>
             <div className="w-100 flex flex-col space-y-12">
-                {allPosts.map((post) => {
+                {allPosts?.map((post) => {
                     return <SinglePost post={post} key={post._id} />;
                 })}
             </div>

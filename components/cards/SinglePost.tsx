@@ -18,6 +18,8 @@ export default function SinglePost({ post }: Props) {
         likeCount,
         readCount,
     } = post;
+    console.log(author);
+    
 
     return (
         <Link href={`/post/${slug.current}`}>
@@ -46,15 +48,15 @@ export default function SinglePost({ post }: Props) {
                     <div className="flex h-6 items-center space-x-2 text-sm font-opens font-light text-gray-500">
                         <img
                             className="h-full rounded-full"
-                            src={urlFor(author.image).url()}
-                            alt={author.name}
+                            src={urlFor(author?.image).url()}
+                            alt={author?.name}
                         />
                         <p className="cursor-pointer hover:underline hover:underline-offset-2">
-                            {author.name}
+                            {author?.name}
                         </p>
                         <span className="h-4 w-px bg-gray-600"></span>
                         <ClockIcon className="h-full" />
-                        <p>{new Date(publishedAt).toLocaleDateString()}</p>
+                        <p>{publishedAt && new Date(publishedAt).toLocaleDateString()}</p>
                     </div>
 
                     {/* post description */}
