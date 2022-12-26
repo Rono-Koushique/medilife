@@ -9,7 +9,7 @@ export default function GridCate({ cate }: Props) {
     return (
         <div
             className="rounded-md overflow-hidden cursor-pointer flex flex-col bg-yellow-50
-                    items-center justify-center group opacity-70 hover:opacity-100 transition-all duration-150"
+                    items-center justify-center group transition-all duration-150"
         >
             <div>
                 <img
@@ -22,12 +22,11 @@ export default function GridCate({ cate }: Props) {
                         space-y-3 h-full group-hover:bg-yellow-50"
             >
                 <h2
-                    className="text-center font-libre text-2xl font-semibold text-gray-700 
-                        group-hover:text-yellow-800"
+                    className="text-center font-libre text-2xl font-semibold text-yellow-800"
                 >
                     {cate.title}
                 </h2>
-                <p className="text-center text-lg text-gray-500 leading-tight group-hover:text-gray-600">
+                <p className="text-center text-lg leading-tight text-gray-600">
                     {cate.description}
                 </p>
             </div>
