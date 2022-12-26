@@ -20,7 +20,7 @@ export default function SinglePost({ post }: Props) {
     } = post;
 
     return (
-        <Link href={`/post/${slug.current}`}>
+        post && <Link href={`/post/${slug.current}`}>
             <div
                 className="flex items-center w-full space-x-5 group
                     hover:bg-gradient-to-b hover:from-gray-100 hover:to-gray-50 cursor-pointer"
@@ -45,7 +45,7 @@ export default function SinglePost({ post }: Props) {
                     {/* post info */}
                     <div className="flex h-6 items-center space-x-2 text-sm font-opens font-light text-gray-500">
                         <img
-                            className="h-full rounded-full"
+                            className="h-full rounded-full filter"
                             src={urlFor(author.image).url()}
                             alt={author.name}
                         />
