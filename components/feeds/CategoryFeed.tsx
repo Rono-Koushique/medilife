@@ -13,7 +13,7 @@ export default function CategoryFeed({ categories }: Props) {
             {/* header */}
             <div className="flex items-end justify-between">
                 <p className="font-libre text-lg text-gray-600">Explore By</p>
-                <Link href={"/"}>
+                <Link href={"/explore"}>
                     <p className="font-opens text-sm text-gray-600 hover:underline hover:underline-offset-2">
                         View All
                     </p>

@@ -1,5 +1,6 @@
 import { Category } from "../../typings";
 import { urlFor } from "../../sanity";
+import { ChevronRightIcon } from "@heroicons/react/outline";
 
 interface Props {
     cate: Category;
@@ -7,28 +8,23 @@ interface Props {
 
 export default function GridCate({ cate }: Props) {
     return (
-        <div
-            className="rounded-md overflow-hidden cursor-pointer flex flex-col bg-yellow-50
-                    items-center justify-center group transition-all duration-150"
-        >
-            <div>
+        <div className="cursor-pointer flex items-center transition-all duration-50 px-4 rounded hover:bg-slate-50">
+            <div className="flex space-x-6 py-4 items-center">
                 <img
-                    className="h-full w-full object-cover "
+                    className="h-20 rounded-full aspect-square object-cover filter saturate-60"
                     src={urlFor(cate.image).url()}
                 />
+                <div className="flex flex-col space-y-1">
+                    <h2 className="font-libre text-xl font-semibold text-slate-700">
+                        {cate.title}
+                    </h2>
+                    <p className="leading-tight text-gray-500">
+                        {cate.description}
+                    </p>
+                </div>
             </div>
-            <div
-                className="flex flex-col items-center justify-center w-full px-6 py-8 
-                        space-y-3 h-full group-hover:bg-yellow-50"
-            >
-                <h2
-                    className="text-center font-libre text-2xl font-semibold text-yellow-800"
-                >
-                    {cate.title}
-                </h2>
-                <p className="text-center text-lg leading-tight text-gray-600">
-                    {cate.description}
-                </p>
+            <div className="h-full flex items-center justify-center ml-auto">
+                <ChevronRightIcon className="h-8 text-gray-300" />
             </div>
         </div>
     );
