@@ -4,20 +4,20 @@ export interface Post {
     slug: {
         current: string;
     };
-    publishedAt?: string;
-    description?: string;
-    author?: {
+    publishedAt: string;
+    description: string;
+    author: {
         name: string;
         image: string;
     };
-    mainImage?: {
+    mainImage: {
         asset: {
-            url?: string;
+            url: string;
         };
     };
-    body?: [object];
-    likeCount?: number;
-    readCount?: number;
+    body: [object];
+    likeCount: number;
+    readCount: number;
 }
 
 export interface Category {

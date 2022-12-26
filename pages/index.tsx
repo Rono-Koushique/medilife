@@ -44,15 +44,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     let posts =
         await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc) {
         _id,
-        publishedAt,
         title,
+        slug,
+        publishedAt,
+        description,
         author -> {
             name,
             image
         },
-        description,
         mainImage,
-        slug,
         likeCount,
         readCount
     }`);

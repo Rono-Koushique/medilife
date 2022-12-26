@@ -13,7 +13,7 @@ export default function PostFeed({ posts }: Props) {
     return (
         <div>
             <div className="w-100 flex flex-col space-y-12">
-                {allPosts?.map((post) => {
+                {allPosts && allPosts.map((post) => {
                     return <SinglePost post={post} key={post._id} />;
                 })}
             </div>
