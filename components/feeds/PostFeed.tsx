@@ -15,30 +15,10 @@ export default function PostFeed({ posts }: Props) {
     const postPerPage = 10;
 
     async function loadMore() {
-        console.log("clicked");
-        let res = await(await fetch('api/hello')).json()
+        let postCount = allPosts.length
+        let res = await(await fetch(`api/posts`)).json()
         console.log(res);
-        
     }
-    
-
-        // let { result } =
-        //     await sanityClient.fetch(`(*[_type == "post"] | order(publishedAt desc))[${newPageRange[0]}..${newPageRange[1]}] {
-        //         _id,
-        //         title,
-        //         slug,
-        //         publishedAt,
-        //         description,
-        //         author -> {
-        //             name,
-        //             image
-        //         },
-        //         mainImage,
-        //         likeCount,
-        //         readCount
-        //     }`);
-        // console.log(result);
-    
 
     return (
         <div>
