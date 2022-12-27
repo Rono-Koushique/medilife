@@ -18,7 +18,7 @@ export default function explore({ categories }: Props) {
             </Head>
 
             <Layout1>
-                <div className="flex flex-col my-14 gap-y-16 items-center">
+                <div className="flex flex-col my-14 gap-y-14 items-center">
                     <div className="flex justify-center w-100">
                         <h1 className="font-libre text-4xl text-gray-500">
                             Wellness Topics

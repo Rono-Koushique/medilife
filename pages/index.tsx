@@ -42,7 +42,7 @@ export default function Home({ posts, topPosts, categories }: Props) {
 export const getServerSideProps: GetServerSideProps = async () => {
     // descended ordered by published at
     let posts =
-        await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc) {
+        await sanityClient.fetch(`(*[_type == "post"] | order(publishedAt desc))[0..9] {
         _id,
         title,
         slug,

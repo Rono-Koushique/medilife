@@ -11,7 +11,7 @@ export default function GridCate({ cate }: Props) {
         <div className="cursor-pointer flex items-center transition-all duration-50 px-4 pl-2 rounded hover:bg-slate-100">
             <div className="flex space-x-6 py-4 items-center">
                 <img
-                    className="h-20 rounded-full aspect-square object-cover filter saturate-60"
+                    className="h-20 rounded-full aspect-square object-cover filter saturate-60 bg-yellow-100"
                     src={urlFor(cate.image).url()}
                 />
                 <div className="flex flex-col space-y-1">
