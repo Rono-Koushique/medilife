@@ -12,16 +12,18 @@ interface Props {
 export default function PostBody({ post }: Props) {
     return (
         <div className="flex flex-col space-y-4">
-            <div className="flex space-x-4">
-                {post.categories.map((cate) => {
-                    return (
-                        <div className="flex items-center space-x-1 font-medium text-teal-600 tracking-wide">
-                            <TagIcon className="h-5" />
-                            <p>{cate.title}</p>
-                        </div>
-                    );
-                })}
-            </div>
+            {post.categories && (
+                <div className="flex space-x-4">
+                    {post.categories.map((cate) => {
+                        return (
+                            <div className="flex items-center space-x-1 font-medium text-teal-600 tracking-wide">
+                                <TagIcon className="h-5" />
+                                <p>{cate.title}</p>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
 
             {/* title */}
             <p className="font-libre text-3xl font-bold text-gray-800 leading-snug">

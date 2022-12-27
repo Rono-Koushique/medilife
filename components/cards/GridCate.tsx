@@ -8,7 +8,7 @@ interface Props {
 
 export default function GridCate({ cate }: Props) {
     return (
-        <div className="cursor-pointer flex items-center transition-all duration-50 px-4 rounded hover:bg-slate-100">
+        <div className="cursor-pointer flex items-center transition-all duration-50 px-4 pl-2 rounded hover:bg-slate-100">
             <div className="flex space-x-6 py-4 items-center">
                 <img
                     className="h-20 rounded-full aspect-square object-cover filter saturate-60"
