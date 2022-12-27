@@ -23,7 +23,7 @@ export default function SinglePost({ post }: Props) {
         post && <Link href={`/post/${slug.current}`}>
             <div
                 className="flex items-center w-full space-x-5 group
-                    hover:bg-gray-50 cursor-pointer"
+                    hover:bg-gray-100 cursor-pointer"
             >
                 {/* post image */}
                 <div className="w-2/5 self-stretch overflow-hidden">

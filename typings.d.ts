@@ -6,6 +6,9 @@ export interface Post {
     };
     publishedAt: string;
     description: string;
+    categories: {
+        title: string
+    }[];
     author: {
         name: string;
         image: string;

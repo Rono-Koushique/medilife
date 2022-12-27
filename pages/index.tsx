@@ -22,12 +22,12 @@ export default function Home({ posts, topPosts, categories }: Props) {
                 <title>MediLife</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
             <Layout1>
                 <div className="grid grid-cols-7 my-14 gap-x-20">
                     <div className="row-span-3 col-span-5 h-100 w-100">
                         <PostFeed posts={posts} />
                     </div>
+                    
                     <div className="col-span-2 w-100 flex flex-col space-y-12">
                         <SearchPost />
                         <CategoryFeed categories={categories} />
@@ -64,7 +64,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
         description
     }`);
 
-    const topPosts = await sanityClient.fetch(`*[_type == "post"] | order(readCount desc) {
+    // get top posts 
+    const topPosts =
+        await sanityClient.fetch(`(*[_type == "post"] | order(readCount desc))[0...6] {
         _id,
         title,
         mainImage,

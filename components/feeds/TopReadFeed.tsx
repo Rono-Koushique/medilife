@@ -8,12 +8,6 @@ interface Props {
 }
 
 export default function TopReadFeed({ posts }: Props) {
-    // const [hydrated, setHydrated] = React.useState<boolean>(false)
-    // React.useEffect(()=>{
-    //     setHydrated(true)
-    // }, [])
-    
-    // const sortedPosts = hydrated ? ( posts && posts.sort((a, b) => b.readCount - a.readCount).slice(1, 9)) : undefined;
     return (
         <div className="flex flex-col">
             {/* header */}
