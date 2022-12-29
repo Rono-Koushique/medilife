@@ -8,6 +8,7 @@ import TopReadFeed from "../components/feeds/TopReadFeed";
 import SearchPost from "../components/inputs/SearchPost";
 import Layout1 from "../components/layouts/Layout1";
 import { Category, Post } from "../typings";
+import { getAllCategories, getRangedPosts, getTopPosts } from "../utils/groq";
 
 interface Props {
     posts: Post[];
@@ -27,7 +28,7 @@ export default function Home({ posts, topPosts, categories }: Props) {
                     <div className="row-span-3 col-span-5 h-100 w-100">
                         <PostFeed posts={posts} />
                     </div>
-                    
+
                     <div className="col-span-2 w-100 flex flex-col space-y-12">
                         <SearchPost />
                         <CategoryFeed categories={categories} />
@@ -41,37 +42,13 @@ export default function Home({ posts, topPosts, categories }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
     // descended ordered by published at
-    let posts =
-        await sanityClient.fetch(`(*[_type == "post"] | order(publishedAt desc))[0..9] {
-        _id,
-        title,
-        slug,
-        publishedAt,
-        description,
-        author -> {
-            name,
-            image
-        },
-        mainImage,
-        likeCount,
-        readCount
-    }`);
+    let posts = await getRangedPosts(0, 9);
 
     // all categories
-    let categories = await sanityClient.fetch(`*[_type == "category"] {
-        title,
-        image,
-        description
-    }`);
+    let categories = await getAllCategories();
 
-    // get top posts 
-    const topPosts =
-        await sanityClient.fetch(`(*[_type == "post"] | order(readCount desc))[0...6] {
-        _id,
-        title,
-        mainImage,
-        slug,
-    }`);
+    // get top posts
+    const topPosts = await getTopPosts(6);
 
     return {
         props: {
@@ -79,5 +56,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
             topPosts: topPosts,
             categories: categories,
         },
-    };
+    }; 
 };

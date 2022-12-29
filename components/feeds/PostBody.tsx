@@ -16,7 +16,7 @@ export default function PostBody({ post }: Props) {
                 <div className="flex space-x-4">
                     {post.categories.map((cate) => {
                         return (
-                            <div className="flex items-center space-x-1 font-medium text-teal-600 tracking-wide">
+                            <div className="flex items-center space-x-1 font-medium text-teal-600 tracking-wide" key={cate.title}>
                                 <TagIcon className="h-5" />
                                 <p>{cate.title}</p>
                             </div>
