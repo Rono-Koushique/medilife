@@ -6,28 +6,38 @@ import PostFeed from "../components/feeds/PostFeed";
 import TopReadFeed from "../components/feeds/TopReadFeed";
 import SearchPost from "../components/inputs/SearchPost";
 import Layout1 from "../components/layouts/Layout1";
-import { Category, Condition, Post } from "../typings";
+import { Category, Condition, Post, Product } from "../typings";
 import {
     getAllCategories,
     getRangedConditions,
     getRangedPosts,
     getTopPosts,
+    getRangedProducts,
 } from "../utils/groq";
 import Magazine from "../components/layouts/Magazine";
 import Wall from "../components/containers/Wall";
 import Frame from "../components/containers/Frame";
 import ConditionFeed from "../components/feeds/ConditionFeed";
+import Page from "../components/containers/Page";
+import ProductFeed from "../components/feeds/ProductFeed";
 
 interface Props {
     posts: Post[];
     topPosts: Post[];
     categories: Category[];
     initialConditions: Condition[];
+    initialProducts: Product[];
 }
 
-export default function Home({ posts, topPosts, categories, initialConditions }: Props) {
+export default function Home({
+    posts,
+    topPosts,
+    categories,
+    initialConditions,
+    initialProducts,
+}: Props) {
     return (
-        <div className="flex min-h-screen w-full">
+        <Page>
             <Head>
                 <title>MediLife</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -49,34 +59,28 @@ export default function Home({ posts, topPosts, categories, initialConditions }:
                     </Frame>
                 </Wall>
                 <Magazine>
-                    <div className="py-14">
-                        <ConditionFeed conditions={initialConditions} />
-                    </div>
+                    <ConditionFeed conditions={initialConditions} />
+                    <ProductFeed products={initialProducts} />
                 </Magazine>
             </Layout1>
-        </div>
+        </Page>
     );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    // descended ordered by published at
     let posts = await getRangedPosts(0, 9);
-
-    // all categories
     let categories = await getAllCategories();
-
-    // get top posts
     let topPosts = await getTopPosts(6);
-
-    // get initial conditions
     let initialConditions = await getRangedConditions(5);
+    let initialProducts = await getRangedProducts(5);
 
     return {
         props: {
-            posts: posts,
-            topPosts: topPosts,
-            categories: categories,
-            initialConditions: initialConditions,
+            posts,
+            topPosts,
+            categories,
+            initialConditions,
+            initialProducts,
         },
     };
 };

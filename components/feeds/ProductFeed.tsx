@@ -1,17 +1,17 @@
 import Link from "next/link";
-import { Condition } from "../../typings";
-import SingleCond from "../cards/SingleCond";
+import { Product } from "../../typings";
+import ProductFe from "../cards/ProductFe";
 
 interface Props {
-    conditions?: Condition[];
+    products?: Product[];
 }
 
-export default function ConditionFeed({ conditions }: Props) {
+export default function ProductFeed({ products }: Props) {
     return (
         <div className="flex flex-col">
             {/* header */}
             <div className="flex items-end justify-between">
-                <p className="font-libre text-2xl text-yellow-800">Health Conditions</p>
+                <p className="font-libre text-2xl text-yellow-800">Product Reviews</p>
                 <Link href={"/condition"}>
                     <p className="font-opens text-sm text-yellow-800 hover:underline hover:underline-offset-2">
                         View All
@@ -20,10 +20,10 @@ export default function ConditionFeed({ conditions }: Props) {
             </div>
             <hr className="mt-1 border-t-2 border-yellow-700 border-opacity-10"/>
 
-            {/* category tiles */}
-            <div className="grid grid-cols-5 gap-8 mt-5 w-full">
-                {conditions?.map((cond) => {
-                    return <SingleCond condition={cond} key={cond.title}/>;
+            {/* product tiles */}
+            <div className="grid grid-cols-5 gap-8 mt-4 w-full">
+                {products?.map((product) => {
+                    return <ProductFe product={product} key={product.title}/>
                 })}
             </div>
         </div>

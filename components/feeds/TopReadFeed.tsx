@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Post } from "../../typings";
-import SingleTopPost from "../cards/SingleTopPost";
+import TopPostFe from "../cards/TopPostFe";
 
 interface Props {
     posts?: Post[];
@@ -24,7 +24,7 @@ export default function TopReadFeed({ posts }: Props) {
             {/* category tiles */}
             <div className="flex flex-col space-y-8 mt-4">
                 {posts && posts.map((post) => {
-                    return <SingleTopPost post={post} key={post._id}/>;
+                    return <TopPostFe post={post} key={post._id}/>;
                 })}
             </div>
         </div>

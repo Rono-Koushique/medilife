@@ -46,6 +46,15 @@ export async function getRangedConditions(count:number) {
     return conditions;
 }
 
+export async function getRangedProducts(count:number) {
+    let products = await sanityClient.fetch(`*[_type == "product"][0...${count.toString()}] {
+        title,
+        image,
+        description
+    }`);
+    return products;
+}
+
 export async function getTopPosts(count:number) {
     const topPosts =
         await sanityClient.fetch(`(*[_type == "post"] | order(readCount desc))[0..${count.toString()}] {

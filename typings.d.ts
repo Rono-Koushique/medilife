@@ -34,3 +34,9 @@ export interface Condition {
     image: string;
     description: string;
 }
+
+export interface Product {
+    title: string;
+    image: string;
+    description: string;
+}

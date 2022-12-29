@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Category } from "../../typings";
-import SingleCate from "../cards/SingleCate";
+import CateFe from "../cards/CateFe";
 
 interface Props {
     categories: Category[];
@@ -24,7 +24,7 @@ export default function CategoryFeed({ categories }: Props) {
             {/* category tiles */}
             <div className="flex flex-col space-y-4 mt-4">
                 {categories.map((cate) => {
-                    return <SingleCate cate={cate} key={cate.title} />;
+                    return <CateFe cate={cate} key={cate.title} />;
                 })}
             </div>
         </div>

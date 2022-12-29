@@ -5,7 +5,7 @@ interface Props {
     cate: Category;
 }
 
-export default function SingleCate({ cate }: Props) {
+export default function CateFe({ cate }: Props) {
     const { title, image } = cate;
     return (
         <div className="flex items-center h-16 space-x-4 cursor-pointer

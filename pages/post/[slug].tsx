@@ -1,20 +1,32 @@
 import Frame from "../../components/containers/Frame";
+import Page from "../../components/containers/Page";
 import Wall from "../../components/containers/Wall";
 import PostBody from "../../components/feeds/PostBody";
 import TopReadFeed from "../../components/feeds/TopReadFeed";
 import Layout1 from "../../components/layouts/Layout1";
+import Magazine from "../../components/layouts/Magazine";
+import ConditionFeed from "../../components/feeds/ConditionFeed";
+import ProductFeed from "../../components/feeds/ProductFeed";
 import { sanityClient } from "../../sanity";
-import { Post } from "../../typings";
+import { Condition, Post, Product } from "../../typings";
 import { GetStaticProps } from "next";
+import { getRangedConditions, getRangedProducts } from "../../utils/groq";
 
 interface Props {
     post: Post;
     topPosts: Post[];
+    initialConditions: Condition[];
+    initialProducts: Product[];
 }
 
-export default function PostPage({ post, topPosts }: Props) {
+export default function PostPage({
+    post,
+    topPosts,
+    initialConditions,
+    initialProducts,
+}: Props) {
     return (
-        <div className="flex min-h-screen w-full">
+        <Page>
             <Layout1>
                 <Wall>
                     <Frame className="max-w-6xl mx-auto">
@@ -28,8 +40,12 @@ export default function PostPage({ post, topPosts }: Props) {
                         </div>
                     </Frame>
                 </Wall>
+                <Magazine>
+                    <ConditionFeed conditions={initialConditions} />
+                    <ProductFeed products={initialProducts} />
+                </Magazine>
             </Layout1>
-        </div>
+        </Page>
     );
 }
 
@@ -94,6 +110,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         slug,
     }`);
 
+    let initialConditions = await getRangedConditions(5);
+    let initialProducts = await getRangedProducts(5);
+
     if (!post) {
         return {
             notFound: true,
@@ -104,6 +123,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             post,
             topPosts,
+            initialConditions,
+            initialProducts,
         },
         revalidate: 60,
     };

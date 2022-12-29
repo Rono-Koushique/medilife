@@ -3,7 +3,8 @@ import { Category } from "../typings";
 import { sanityClient } from "../sanity";
 import Head from "next/head";
 import Layout1 from "../components/layouts/Layout1";
-import GridCate from "../components/cards/GridCate";
+import CatePa from "../components/cards/CatePa";
+import Page from "../components/containers/Page";
 
 interface Props {
     categories: Category[];
@@ -11,7 +12,7 @@ interface Props {
 
 export default function explore({ categories }: Props) {
     return (
-        <div className="flex min-h-screen w-full">
+        <Page>
             <Head>
                 <title>MediLife</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -27,12 +28,12 @@ export default function explore({ categories }: Props) {
                     <div className="grid grid-cols-2 gap-8 max-w-5xl">
                         {categories &&
                             categories.map((cate) => {
-                                return <GridCate cate={cate} />;
+                                return <CatePa cate={cate} />;
                             })}
                     </div>
                 </div>
             </Layout1>
-        </div>
+        </Page>
     );
 }
 
