@@ -1,4 +1,6 @@
 import React from "react";
+import Wall from "../containers/Wall";
+import Frame from "../containers/Frame";
 import Footer1 from "../footers/Footer1";
 import Navbar1 from "../navbars/Navbar1";
 
@@ -8,10 +10,10 @@ interface Props {
 
 export default function Layout1({ children }: Props) {
     return (
-        <div className="w-full max-w-6xl mx-auto flex flex-col">
+        <Wall className="min-h-screen flex flex-col">
             <Navbar1 />
-            <div className="min-h-fit flex-grow">{children}</div>
+            {children}
             <Footer1 />
-        </div>
+        </Wall>
     );
 }

@@ -8,8 +8,8 @@ export default function Newsletter() {
                 placeholder="Enter your email"
             />
             <button
-                className="bg-transparent font-opens text-sm font-normal px-6 h-100 
-                            border border-white leading-none rounded hover:bg-white 
+                className="bg-transparent font-opens text-sm text-slate-100 font-light px-6 h-100 
+                            border border-slate-100 leading-none rounded hover:bg-white 
                             hover:text-black transition duration-200"
             >
                 Sign Up

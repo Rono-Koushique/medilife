@@ -12,7 +12,7 @@ export default function SingleCate({ cate }: Props) {
                     hover:bg-gray-100 transition duration-100 ease-in-out">
             <div className="h-full">
                 <img
-                    className="h-full w-full object-cover"
+                    className="h-full aspect-square object-cover"
                     src={urlFor(image).url()}
                     alt=""
                 />

@@ -1,3 +1,5 @@
+import Frame from "../../components/containers/Frame";
+import Wall from "../../components/containers/Wall";
 import PostBody from "../../components/feeds/PostBody";
 import TopReadFeed from "../../components/feeds/TopReadFeed";
 import Layout1 from "../../components/layouts/Layout1";
@@ -14,14 +16,18 @@ export default function PostPage({ post, topPosts }: Props) {
     return (
         <div className="flex min-h-screen w-full">
             <Layout1>
-                <div className="grid grid-cols-7 my-14 gap-x-20">
-                    <div className="row-span-3 col-span-5 h-100 w-100">
-                        <PostBody post={post} />
-                    </div>
-                    <div className="col-span-2 w-100 flex flex-col space-y-12">
-                        <TopReadFeed posts={topPosts} />
-                    </div>
-                </div>
+                <Wall>
+                    <Frame className="max-w-6xl mx-auto">
+                        <div className="grid grid-cols-7 my-14 gap-x-20">
+                            <div className="row-span-3 col-span-5 h-100 w-100">
+                                <PostBody post={post} />
+                            </div>
+                            <div className="col-span-2 w-100 flex flex-col space-y-12">
+                                <TopReadFeed posts={topPosts} />
+                            </div>
+                        </div>
+                    </Frame>
+                </Wall>
             </Layout1>
         </div>
     );

@@ -28,6 +28,24 @@ export async function getAllCategories() {
     return categories;
 }
 
+export async function getAllConditions() {
+    let conditions = await sanityClient.fetch(`*[_type == "condition"] {
+        title,
+        image,
+        description
+    }`);
+    return conditions;
+}
+
+export async function getRangedConditions(count:number) {
+    let conditions = await sanityClient.fetch(`*[_type == "condition"][0...${count.toString()}] {
+        title,
+        image,
+        description
+    }`);
+    return conditions;
+}
+
 export async function getTopPosts(count:number) {
     const topPosts =
         await sanityClient.fetch(`(*[_type == "post"] | order(readCount desc))[0..${count.toString()}] {

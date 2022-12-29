@@ -8,6 +8,11 @@
     clip-path: inset(0 -100vmax);
 }
 
+.full-bleed-mag {
+    box-shadow: 0 0 0 100vmax #FEF08A;
+    clip-path: inset(0 -100vmax);
+}
+
 @layer components {
     .post-info-holder {
         @apply flex items-center h-fit space-x-2

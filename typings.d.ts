@@ -28,3 +28,9 @@ export interface Category {
     image: string;
     description: string;
 }
+
+export interface Condition {
+    title: string;
+    image: string;
+    description: string;
+}
