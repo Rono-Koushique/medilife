@@ -7,11 +7,12 @@ export interface Post {
     publishedAt: string;
     description: string;
     categories: {
-        title: string
+        title: string;
     }[];
     author: {
         name: string;
         image: string;
+        bio: [object];
     };
     mainImage: {
         asset: {
@@ -39,4 +40,10 @@ export interface Product {
     title: string;
     image: string;
     description: string;
+}
+
+export interface Author {
+    name: string;
+    image: string;
+    bio: [object];
 }

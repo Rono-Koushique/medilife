@@ -18,3 +18,9 @@
         @apply flex items-center h-fit space-x-2
     }
 }
+
+@layer components {
+    .iconify {
+        @apply text-2xl text-slate-600 cursor-pointer hover:text-cyan-600
+    }
+}
