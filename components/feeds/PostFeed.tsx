@@ -1,6 +1,6 @@
 import React from "react";
 import { Post } from "../../typings";
-import ShowMore from "../button/ShowMore";
+import ShowMore from "../buttons/ShowMore";
 import SinglePost from "../cards/SinglePost";
 import { sanityClient } from "../../sanity";
 import Loading from "../extras/Loading";

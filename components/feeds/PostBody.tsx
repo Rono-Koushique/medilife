@@ -8,6 +8,7 @@ import { TagIcon } from "@heroicons/react/outline";
 import Frame from "../containers/Frame";
 import PostShare from "../cards/PostShare";
 import PostAuthor from "../cards/PostAuthor";
+import PostReply from "../forms/PostReply";
 
 interface Props {
     post: Post;
@@ -17,7 +18,7 @@ export default function PostBody({ post }: Props) {
     const [submitted, setSubmitted] = React.useState(false);
     return (
         <Frame>
-            <section  className="flex flex-col space-y-4">
+            <section className="flex flex-col space-y-4">
                 {post.categories && (
                     <div className="flex space-x-4">
                         {post.categories.map((cate) => {
@@ -146,8 +147,15 @@ export default function PostBody({ post }: Props) {
                 )}
             </article>
 
-            <section><PostShare /></section>
-            <section><PostAuthor author={post.author}/></section>
+            <section>
+                <PostShare />
+            </section>
+            <section>
+                <PostAuthor author={post.author} />
+            </section>
+            <section>
+                <PostReply submitted={submitted} setSubmitted={setSubmitted} postId={post._id} />
+            </section>
         </Frame>
     );
 }
