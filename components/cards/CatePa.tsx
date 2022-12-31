@@ -8,10 +8,11 @@ interface Props {
 
 export default function CatePa({ cate }: Props) {
     return (
-        <div className="cursor-pointer flex items-center transition-all duration-50 px-4 pl-2 rounded hover:bg-slate-100">
-            <div className="flex space-x-6 py-4 items-center">
+        <div className="cursor-pointer flex items-center transition-all duration-50 p-4 rounded-lg rounded-tl-full rounded-bl-full overflow-hidden
+                    group hover:scale-105 hover:shadow-xl">
+            <div className="flex space-x-6 items-center">
                 <img
-                    className="h-20 rounded-full aspect-square object-cover filter saturate-60 bg-yellow-100"
+                    className="h-20 w-20 rounded-full object-cover filter saturate-60 bg-yellow-100"
                     src={urlFor(cate.image).url()}
                 />
                 <div className="flex flex-col space-y-1">

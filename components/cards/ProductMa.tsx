@@ -6,7 +6,7 @@ interface Props {
     product: Product
 }
 
-export default function ProductFe({ product }: Props) {
+export default function ProductMa({ product }: Props) {
   return (
     <div className='flex flex-col items-center w-full'>
         <img className='w-full aspect-square rounded-full border-2 border-yellow-900 border-opacity-30 object-cover' src={urlFor(product.image).url()} alt={product.title}/>

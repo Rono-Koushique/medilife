@@ -137,7 +137,7 @@ export default function PostBody({ post }: Props) {
                             image: (props: any) => {
                                 return (
                                     <img
-                                        className="my-6"
+                                        className="my-6 h-[444px] w-full object-cover"
                                         src={urlFor(props.asset).url()}
                                     />
                                 );

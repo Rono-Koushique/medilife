@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Product } from "../../typings";
-import ProductFe from "../cards/ProductFe";
+import ProductMa from "../cards/ProductMa";
 
 interface Props {
     products?: Product[];
@@ -23,7 +23,7 @@ export default function ProductFeed({ products }: Props) {
             {/* product tiles */}
             <div className="grid grid-cols-5 gap-8 mt-4 w-full">
                 {products?.map((product) => {
-                    return <ProductFe product={product} key={product.title}/>
+                    return <ProductMa product={product} key={product.title}/>
                 })}
             </div>
         </div>

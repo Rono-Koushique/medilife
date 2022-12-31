@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Condition } from "../../typings";
-import SingleCond from "../cards/SingleCond";
+import CondMa from "../cards/CondMa";
 
 interface Props {
     conditions?: Condition[];
@@ -12,7 +12,7 @@ export default function ConditionFeed({ conditions }: Props) {
             {/* header */}
             <div className="flex items-end justify-between">
                 <p className="font-libre text-2xl text-yellow-800">Health Conditions</p>
-                <Link href={"/condition"}>
+                <Link href={"/health-condition"}>
                     <p className="font-opens text-sm text-yellow-800 hover:underline hover:underline-offset-2">
                         View All
                     </p>
@@ -23,7 +23,7 @@ export default function ConditionFeed({ conditions }: Props) {
             {/* category tiles */}
             <div className="grid grid-cols-5 gap-8 mt-5 w-full">
                 {conditions?.map((cond) => {
-                    return <SingleCond condition={cond} key={cond.title}/>;
+                    return <CondMa condition={cond} key={cond.title}/>;
                 })}
             </div>
         </div>

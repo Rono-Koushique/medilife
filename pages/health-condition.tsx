@@ -5,7 +5,7 @@ import Layout1 from "../components/layouts/Layout1";
 import CatePa from "../components/cards/CatePa";
 import Page from "../components/containers/Page";
 import {
-    getAllCategories,
+    getAllConditions,
     getRangedConditions,
     getRangedProducts,
 } from "../utils/groq";
@@ -13,14 +13,19 @@ import Wall from "../components/containers/Wall";
 import Magazine from "../components/layouts/Magazine";
 import ConditionFeed from "../components/feeds/ConditionFeed";
 import ProductFeed from "../components/feeds/ProductFeed";
+import CondPa from "../components/cards/CondPa";
 
 interface Props {
-    categories: Category[];
+    conditions: Condition[];
     initialConditions: Condition[];
     initialProducts: Product[];
 }
 
-export default function explore({ categories, initialConditions, initialProducts }: Props) {
+export default function healthCondition({
+    conditions,
+    initialConditions,
+    initialProducts,
+}: Props) {
     return (
         <Page>
             <Head>
@@ -33,19 +38,19 @@ export default function explore({ categories, initialConditions, initialProducts
                     <div className="flex flex-col my-14 gap-y-14 items-center">
                         <div className="flex justify-center w-100">
                             <h1 className="font-libre text-4xl text-gray-500">
-                                Wellness Topics
+                                Health Condition
                             </h1>
                         </div>
                         <div className="grid grid-cols-2 gap-10 max-w-5xl">
-                            {categories &&
-                                categories.map((cate) => {
-                                    return <CatePa cate={cate} />;
+                            {conditions &&
+                                conditions.map((cond) => {
+                                    return <CondPa cond={cond} />;
                                 })}
                         </div>
                     </div>
                 </Wall>
                 <Magazine>
-                    <ConditionFeed conditions={initialConditions} />
+                    {/* <ConditionFeed conditions={initialConditions} /> */}
                     <ProductFeed products={initialProducts} />
                 </Magazine>
             </Layout1>
@@ -54,14 +59,13 @@ export default function explore({ categories, initialConditions, initialProducts
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    // all categories
-    let categories = await getAllCategories();
+    let conditions = await getAllConditions();
     let initialConditions = await getRangedConditions(5);
     let initialProducts = await getRangedProducts(5);
 
     return {
         props: {
-            categories,
+            conditions,
             initialConditions,
             initialProducts,
         },
