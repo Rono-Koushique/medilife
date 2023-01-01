@@ -2,6 +2,7 @@ import { Post } from "../../typings";
 import { urlFor } from "../../sanity";
 import { ClockIcon, HeartIcon, BookOpenIcon } from "@heroicons/react/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
     post: Post;
@@ -27,15 +28,12 @@ export default function SinglePost({ post }: Props) {
             >
                 {/* post image */}
                 <div className="w-2/5 relative self-stretch overflow-hidden">
-                    {/* {mainImage && (
-                        <div className>
-                            pic holder
-                        </div>
-                    )} */}
                     {mainImage && (
-                        <img
-                            className="absolute top-0 left-0 h-full w-full object-cover group-hover:scale-105 origin-center transition duration-200 ease-in-out"
+                        <Image
+                            className="absolute top-0 left-0 object-cover group-hover:scale-105 
+                                    origin-center transition duration-200 ease-in-out"
                             src={urlFor(mainImage).url()}
+                            fill={true}
                             alt={title}
                         />
                     )}
