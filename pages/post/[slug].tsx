@@ -28,7 +28,7 @@ export default function PostPage({
     return (
         <Page>
             <Layout1>
-                <Wall>
+                <Wall className="pb-4">
                     <Frame className="max-w-6xl mx-auto">
                         <div className="grid grid-cols-7 my-14 gap-x-20">
                             <div className="row-span-3 col-span-5 h-100 w-100">

@@ -12,8 +12,6 @@ interface Props {
 export default function PostFeed({ posts }: Props) {
     const [allPosts, setAllPosts] = React.useState<Post[]>(posts && [...posts]);
     const [loading, setLoading] = React.useState(false);
-    const [pageRange, setPageRange] = React.useState([0, 9]);
-    const postPerPage = 10;
 
     async function loadMore() {
         setLoading(true);

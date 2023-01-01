@@ -24,3 +24,13 @@
         @apply text-2xl text-slate-600 cursor-pointer hover:text-cyan-600
     }
 }
+
+@layer components {
+    .comment-input-holder {
+        @apply flex border-b border-gray-300 px-4 py-2 overflow-hidden rounded-xl
+    }
+
+    .comment-input {
+        @apply bg-transparent outline-none w-full font-opens placeholder-slate-500
+    }
+}

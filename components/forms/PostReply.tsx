@@ -1,5 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Icon } from "@iconify/react";
+import Frame from "../containers/Frame";
 
 interface Props {
     submitted: boolean;
@@ -22,74 +23,113 @@ export default function PostReply({ submitted, setSubmitted, postId }: Props) {
         formState: { errors },
     } = useForm<IFormInput>();
 
+    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+        setSubmitted(true);
+        setTimeout(() => {
+            setSubmitted(false);
+        }, 3000);
+    };
+
     return (
-        <div className="mt-12">
-            <p className="font-libre font-bold text-xl text-slate-700">
-                Leave a Reply
-            </p>
-            <form>
-                {/* hidden configuration input */}
-                <input
-                    {...register("_id")}
-                    type="hidden"
-                    name="_id"
-                    value={postId}
-                />
-                <div className="grid grid-cols-2 gap-x-8">
-                    {/* name input */}
-                    <div className="flex items-center mb-5 border-b  px-3 border-gray-300 rounded-xl overflow-hidden">
+        <Frame>
+            {submitted ? (
+                <div>Submiting</div>
+            ) : (
+                <div className="mt-12">
+                    <p className="font-libre font-bold text-xl text-slate-700">
+                        Leave a Comment
+                    </p>
+                    <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
+                        {/* hidden configuration input */}
                         <input
-                            {...register("name", { required: true })}
-                            className="py-2 form-input outline-none mt-1 w-full font-opens placeholder-slate-500"
-                            placeholder="Name..."
-                            type="text"
+                            {...register("_id")}
+                            type="hidden"
+                            name="_id"
+                            value={postId}
                         />
-                        <Icon
-                            className="text-3xl text-slate-500"
-                            icon="mdi:user-online-outline"
-                        />
-                    </div>
-                    {/* email input */}
-                    <div className="flex items-center mb-5 border-b  px-3 border-gray-300 rounded-xl overflow-hidden">
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* name input */}
+                            <div className="items-center comment-input-holder">
+                                <input
+                                    {...register("name", { required: true })}
+                                    className="form-input comment-input"
+                                    placeholder="Name..."
+                                    type="text"
+                                />
+                                <Icon
+                                    className="text-3xl text-slate-500"
+                                    icon="mdi:user-online-outline"
+                                />
+                            </div>
+                            {/* email input */}
+                            <div className="items-center comment-input-holder">
+                                <input
+                                    {...register("email", { required: true })}
+                                    className="form-input comment-input"
+                                    placeholder="Email"
+                                    type="email"
+                                />
+                                <Icon
+                                    className="text-3xl text-slate-500"
+                                    icon="ic:outline-mail-outline"
+                                />
+                            </div>
+                            {/* website input */}
+                            <div className="col-span-2 items-center comment-input-holder">
+                                <input
+                                    {...register("website")}
+                                    className="form-input comment-input"
+                                    placeholder="Website"
+                                    type="text"
+                                />
+                                <Icon
+                                    className="text-3xl text-slate-500"
+                                    icon="mdi:web-check"
+                                />
+                            </div>
+                            {/* comment input */}
+                            <div className="col-span-2 items-start comment-input-holder">
+                                <textarea
+                                    {...register("comment")}
+                                    className="form-input h-fit leading-relaxed comment-input"
+                                    placeholder="Your Comment"
+                                    rows={3}
+                                />
+                                <Icon
+                                    className="text-3xl text-slate-500"
+                                    icon="material-symbols:chat-bubble-outline"
+                                />
+                            </div>
+                        </div>
+                        {(errors.name || errors.email || errors.comment) && (
+                            <div className="flex flex-col p-5">
+                                {errors.name && (
+                                    <span className="text-red-500">
+                                        - The name field is required *
+                                    </span>
+                                )}
+                                {errors.email && (
+                                    <span className="text-red-500">
+                                        - The email field is required *
+                                    </span>
+                                )}
+                                {errors.comment && (
+                                    <span className="text-red-500">
+                                        - The comment field is required *
+                                    </span>
+                                )}
+                            </div>
+                        )}
                         <input
-                            {...register("email", { required: true })}
-                            className="py-2 form-input outline-none mt-1 w-full font-opens placeholder-slate-500"
-                            placeholder="Email"
-                            type="email"
+                            className="shadow-md bg-gray-50 border border-slate-100 text-slate-500 hover:bg-gray-100 focus:shadow-outline focus:outline-none 
+                                font-semibold hover:text-slate-600 p-3 rounded-md cursor-pointer w-full transition duration-200 ease-in-out 
+                                active:bg-gray-50 active:shadow-sm mt-8"
+                            type="submit"
+                            value="Submit Comment"
                         />
-                        <Icon
-                            className="text-3xl text-slate-500"
-                            icon="ic:outline-mail-outline"
-                        />
-                    </div>
-                    {/* website input */}
-                    <div className="col-span-2 flex items-center mb-5 border-b  px-3 border-gray-300 rounded-xl overflow-hidden">
-                        <input
-                            {...register("website")}
-                            className="py-2 form-input outline-none mt-1 w-full font-opens placeholder-slate-500"
-                            placeholder="Website"
-                            type="text"
-                        />
-                        <Icon
-                            className="text-3xl text-slate-500"
-                            icon="mdi:web-check"
-                        />
-                    </div>
-                    {/* comment input */}
-                    <div className="col-span-2 flex items-start mb-5 border-b  px-3 border-gray-300 rounded-xl overflow-hidden">
-                        <textarea
-                            {...register("comment")}
-                            className="py-2 form-input outline-none mt-1 w-full font-opens placeholder-slate-500"
-                            placeholder="Your Comment"
-                            rows={4}
-                        />
-                        <Icon
-                            className="text-3xl text-slate-500"
-                            icon="material-symbols:chat-bubble-outline"
-                        />
-                    </div>
+                    </form>
                 </div>
-            </form>
-        </div>
+            )}
+        </Frame>
     );
 }
