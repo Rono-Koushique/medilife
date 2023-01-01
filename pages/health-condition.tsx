@@ -1,8 +1,7 @@
 import { GetServerSideProps } from "next";
-import { Category, Condition, Product } from "../typings";
+import { Condition, Product } from "../typings";
 import Head from "next/head";
 import Layout1 from "../components/layouts/Layout1";
-import CatePa from "../components/cards/CatePa";
 import Page from "../components/containers/Page";
 import {
     getAllConditions,
@@ -11,7 +10,6 @@ import {
 } from "../utils/groq";
 import Wall from "../components/containers/Wall";
 import Magazine from "../components/layouts/Magazine";
-import ConditionFeed from "../components/feeds/ConditionFeed";
 import ProductFeed from "../components/feeds/ProductFeed";
 import CondPa from "../components/cards/CondPa";
 
@@ -23,7 +21,6 @@ interface Props {
 
 export default function healthCondition({
     conditions,
-    initialConditions,
     initialProducts,
 }: Props) {
     return (
@@ -41,7 +38,7 @@ export default function healthCondition({
                                 Health Condition
                             </h1>
                         </div>
-                        <div className="grid grid-cols-2 gap-10 max-w-5xl">
+                        <div className="grid grid-cols-2 gap-10 max-w-6xl">
                             {conditions &&
                                 conditions.map((cond) => {
                                     return <CondPa cond={cond} />;
@@ -60,13 +57,11 @@ export default function healthCondition({
 
 export const getServerSideProps: GetServerSideProps = async () => {
     let conditions = await getAllConditions();
-    let initialConditions = await getRangedConditions(5);
     let initialProducts = await getRangedProducts(5);
 
     return {
         props: {
             conditions,
-            initialConditions,
             initialProducts,
         },
     };

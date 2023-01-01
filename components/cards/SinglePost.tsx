@@ -26,10 +26,15 @@ export default function SinglePost({ post }: Props) {
                     hover:bg-gray-100 cursor-pointer"
             >
                 {/* post image */}
-                <div className="w-2/5 self-stretch overflow-hidden">
+                <div className="w-2/5 relative self-stretch overflow-hidden">
+                    {/* {mainImage && (
+                        <div className>
+                            pic holder
+                        </div>
+                    )} */}
                     {mainImage && (
                         <img
-                            className="h-full max-h-80 w-full object-cover group-hover:scale-105 transition duration-200 ease-in-out"
+                            className="absolute top-0 left-0 h-full w-full object-cover group-hover:scale-105 origin-center transition duration-200 ease-in-out"
                             src={urlFor(mainImage).url()}
                             alt={title}
                         />
