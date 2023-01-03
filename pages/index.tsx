@@ -44,7 +44,7 @@ export default function Home({
                 <title>MediLife</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <LoginFeed />
+            <LoginFeed/>
             <Layout1>
                 <Wall className="pb-4">
                     <Frame className="max-w-6xl mx-auto">

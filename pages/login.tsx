@@ -1,7 +1,5 @@
 import React from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
-import { urlFor } from "../sanity";
 
 export default function login() { 
     const { data: session } = useSession();

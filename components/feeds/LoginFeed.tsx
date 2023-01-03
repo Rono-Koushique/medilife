@@ -35,7 +35,7 @@ export default function LoginFeed() {
                                     {session.user?.name
                                         ?.split(" ")
                                         .map((word) => {
-                                            return <span>{word[0]}</span>;
+                                            return <span key={word}>{word[0]}</span>;
                                         })}
                                 </div>
                                 <div className="hidden group-hover:block">
