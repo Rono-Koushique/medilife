@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.full-bleed {
-    box-shadow: 0 0 0 100vmax #000;
-    clip-path: inset(0 -100vmax);
-}
-
-.full-bleed-mag {
-    box-shadow: 0 0 0 100vmax #FEF08A;
-    clip-path: inset(0 -100vmax);
-}
-
 @layer components {
     .post-info-holder {
         @apply flex items-center h-fit space-x-2
@@ -23,9 +12,7 @@
     .iconify {
         @apply text-2xl text-slate-600 cursor-pointer hover:text-cyan-600
     }
-}
 
-@layer components {
     .comment-input-holder {
         @apply flex border-b border-gray-300 px-4 py-2 overflow-hidden rounded-xl
     }
@@ -33,4 +20,5 @@
     .comment-input {
         @apply bg-transparent outline-none w-full font-opens placeholder-slate-500
     }
+
 }

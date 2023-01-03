@@ -20,6 +20,8 @@ import Frame from "../components/containers/Frame";
 import ConditionFeed from "../components/feeds/ConditionFeed";
 import Page from "../components/containers/Page";
 import ProductFeed from "../components/feeds/ProductFeed";
+import LoginFeed from "../components/feeds/LoginFeed";
+import { getSession } from "next-auth/react";
 
 interface Props {
     posts: Post[];
@@ -42,6 +44,7 @@ export default function Home({
                 <title>MediLife</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <LoginFeed />
             <Layout1>
                 <Wall className="pb-4">
                     <Frame className="max-w-6xl mx-auto">
@@ -67,12 +70,13 @@ export default function Home({
     );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     let posts = await getRangedPosts(0, 9);
     let categories = await getAllCategories();
     let topPosts = await getTopPosts(6);
     let initialConditions = await getRangedConditions(5);
     let initialProducts = await getRangedProducts(5);
+    let session = await getSession(context)
 
     return {
         props: {
@@ -81,6 +85,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             categories,
             initialConditions,
             initialProducts,
+            session
         },
     };
 };

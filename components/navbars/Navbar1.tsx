@@ -2,6 +2,7 @@ import Link from "next/link";
 import Frame from "../containers/Frame";
 import Wall from "../containers/Wall";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const navLinks = [
     {
@@ -37,11 +38,13 @@ export default function Navbar1() {
         <Wall>
             <Frame className="max-w-6xl mx-auto">
                 {/* brand logo */}
-                <div className="mx-auto my-5 flex justify-center">
-                    <Link href="/">
-                        <img
-                            className="h-32"
+                <div className="mx-auto my-5 flex justify-center h-32">
+                    <Link href="/" className="h-full w-fit">
+                        <Image
                             src="/images/logo/brand-dark.png"
+                            className="h-full w-full"
+                            width={100}
+                            height={100}
                             alt="brand"
                         />
                     </Link>

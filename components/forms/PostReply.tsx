@@ -121,8 +121,8 @@ export default function PostReply({ submitted, setSubmitted, postId }: Props) {
                             </div>
                         )}
                         <input
-                            className="shadow-md bg-gray-50 border border-slate-100 text-slate-500 hover:bg-gray-100 focus:shadow-outline focus:outline-none 
-                                font-semibold hover:text-slate-600 p-3 rounded-md cursor-pointer w-full transition duration-200 ease-in-out 
+                            className="shadow-md bg-gray-50 border border-slate-200 text-slate-500 hover:bg-gray-100 focus:shadow-outline focus:outline-none 
+                                font-semibold hover:text-slate-600 p-2 rounded-md cursor-pointer w-full transition duration-200 ease-in-out 
                                 active:bg-gray-50 active:shadow-sm mt-8"
                             type="submit"
                             value="Submit Comment"
