@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    /* border: 1px solid rgba(0,0,0,0.1) */
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 @layer components {
     .post-info-holder {
         @apply flex items-center h-fit space-x-2
@@ -21,4 +32,16 @@
         @apply bg-transparent outline-none w-full font-opens placeholder-slate-500
     }
 
+}
+
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
 }

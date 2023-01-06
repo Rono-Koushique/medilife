@@ -10,13 +10,14 @@ export default function LoginFeed() {
             className="fixed top-[11.8rem] group text-white z-10 cursor-pointer opacity-70
                     hover:opacity-100 transition-all duration-500 ease-in-out group"
         >
-            <div className="absolute z-10 bottom-[100%] w-full h-8 bg-transparent rounded-bl-xl shadow-[-0.7rem_0.7rem_0_0_#4B5563]" />
-            <div className="relative z-20 flex items-center justify-center bg-gray-600 rounded-tr-xl rounded-br-xl">
+            <div className="absolute z-10 bottom-[100%] w-full h-8 bg-transparent rounded-bl-2xl shadow-[-1rem_0.7rem_0_0_#4B5563]" />
+            <div className="relative z-20 flex items-center justify-center bg-gray-600 rounded-tr-2xl rounded-br-2xl">
                 <div className="py-2 px-1.5">
                     {session ? (
+                        // session available
                         <div
                             className="flex flex-col items-center space-y-1 
-                                    group-hover:flex-row group-hover:items-start group-hover:space-x-4"
+                                    group-hover:flex-row group-hover:items-start group-hover:space-x-2"
                         >
                             <div>
                                 {session.user?.image && (
@@ -39,7 +40,7 @@ export default function LoginFeed() {
                                         })}
                                 </div>
                                 <div className="hidden group-hover:block">
-                                    <p>{session.user?.name}</p>
+                                    <p className="font-bold">{session.user?.name}</p>
                                 </div>
                                 <div className="hidden group-hover:block">
                                     <p>{session.user?.email}</p>
@@ -52,6 +53,7 @@ export default function LoginFeed() {
                             </div>
                         </div>
                     ) : (
+                        // no session found
                         <div className="flex flex-row items-center group-hover:space-x-2">
                             <p className="hidden group-hover:block">Sign In</p>
                             <button onClick={() => signIn()}>
@@ -64,7 +66,7 @@ export default function LoginFeed() {
                     )}
                 </div>
             </div>
-            <div className="absolute z-10 top-[100%] w-full h-8 bg-transparent rounded-tl-xl shadow-[-0.7rem_-0.7rem_0_0_#4B5563]" />
+            <div className="absolute z-10 top-[100%] w-full h-8 bg-transparent rounded-tl-2xl shadow-[-1rem_-0.7rem_0_0_#4B5563]" />
         </div>
     );
 }

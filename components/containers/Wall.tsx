@@ -5,6 +5,6 @@ interface Props {
 
 export default function Wall({ children, className }: Props) {
     return (
-        <div className={`w-full h-fit ${className ? className : ""}`}>{children}</div>
+        <div className={`w-full h-fit transition duration-300 ease-in-out ${className}`}>{children}</div>
     );
 }

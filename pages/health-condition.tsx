@@ -5,7 +5,6 @@ import Layout1 from "../components/layouts/Layout1";
 import Page from "../components/containers/Page";
 import {
     getAllConditions,
-    getRangedConditions,
     getRangedProducts,
 } from "../utils/groq";
 import Wall from "../components/containers/Wall";

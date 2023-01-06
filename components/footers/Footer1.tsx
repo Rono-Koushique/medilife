@@ -6,21 +6,22 @@ import Newsletter from "../inputs/Newsletter";
 export default function Footer1() {
     return (
         <Wall className="bg-black">
-            <Frame className="max-w-6xl mx-auto">
-                <div className="flex w-full py-14 items-center">
+            <Frame className="mx-4 my-11 text-slate-100 flex flex-col 
+                            lg:max-w-6xl lg:mx-auto lg:px-4">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     {/* left side */}
-                    <div className="flex flex-col flex-grow space-y-4">
-                        <p className="font-libre text-2xl text-slate-50">
+                    <div className="flex flex-col space-y-4 sm:max-w-md">
+                        <p className="font-libre text-2xl">
                             Get our wellness newsletter
                         </p>
-                        <p className="font-opens text-sm text-slate-100 max-w-md font-extralight tracking-wide">
+                        <p className="text-sm text-slate-300">
                             Filter out the noise and nurture your inbox with
                             health and wellness advice that’s inclusive and
                             rooted in medical expertise.
                         </p>
                         <Newsletter />
-                        <p className="font-opens text-sm text-slate-100 max-w-md font-extralight tracking-wide">
-                            Your <span className="text-cyan-300">privacy</span>{" "}
+                        <p className="text-sm">
+                            Your <span className="text-cyan-500">privacy</span>{" "}
                             is important to us
                         </p>
                     </div>
@@ -28,21 +29,29 @@ export default function Footer1() {
                     {/* right side */}
                     <Link href="/">
                         <img
-                            className="h-24"
+                            className="hidden md:block md:h-24"
                             src="/images/logo/brand-light.png"
                             alt="brand"
                         />
                     </Link>
                 </div>
+            </Frame>
 
+            <Frame className="text-slate-100 w-full">
                 {/* bottom section */}
-                <div className="flex justify-between border-t border-gray-400 py-1 text-sm text-gray-200">
-                    <p>© 2022 ByteStack. All Rights Reserved</p>
-                    <div className="flex space-x-2">
+                <div
+                    className="border-t border-gray-500 w-full flex flex-col items-center py-3
+                            sm:flex-row sm:px-4 sm:justify-between sm:py-1 
+                            lg:max-w-6xl lg:mx-auto"
+                >
+                    <p className="text-sm">
+                        © 2022 ByteStack. All Rights Reserved
+                    </p>
+                    <div className="hidden sm:flex sm:space-x-4 sm:items-center">
                         <p>Terms of use</p>
-                        <span className="h-full w-px bg-gray-200"></span>
+                        <span className="w-px h-4 bg-gray-200"></span>
                         <p>Privacy</p>
-                        <span className="h-full w-px bg-gray-200"></span>
+                        <span className="w-px h-4 bg-gray-200"></span>
                         <p>Cookies</p>
                     </div>
                 </div>

@@ -2,7 +2,6 @@ import React from "react";
 import { Post } from "../../typings";
 import ShowMore from "../buttons/ShowMore";
 import SinglePost from "../cards/SinglePost";
-import { sanityClient } from "../../sanity";
 import Loading from "../extras/Loading";
 
 interface Props {
@@ -26,7 +25,8 @@ export default function PostFeed({ posts }: Props) {
 
     return (
         <div>
-            <div className="w-100 flex flex-col space-y-12">
+            <div className="w-100 flex flex-col gap-y-16
+                        lg:gap-y-16">
                 {allPosts &&
                     allPosts.map((post) => {
                         return <SinglePost post={post} key={post._id} />;

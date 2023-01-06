@@ -1,16 +1,29 @@
-import React from 'react'
-import { Product } from '../../typings'
-import { urlFor } from '../../sanity'
+import React from "react";
+import { Product } from "../../typings";
+import { urlFor } from "../../sanity";
+import Image from "next/image";
 
 interface Props {
-    product: Product
+    product: Product;
 }
 
 export default function ProductMa({ product }: Props) {
-  return (
-    <div className='flex flex-col items-center w-full'>
-        <img className='w-full aspect-square rounded-full border-2 border-yellow-900 border-opacity-30 object-cover' src={urlFor(product.image).url()} alt={product.title}/>
-        <p className='text-center leading-tight mt-1 text-yellow-900 font-semibold w-4/5'>{product.title}</p>
-    </div>
-  )
+    return (
+        <div className="flex flex-col items-center">
+            <div
+                className="w-44 h-44 relative rounded-3xl border-2 border-yellow-900 border-opacity-30 overflow-hidden
+                    lg:w-full lg:aspect-square lg:h-auto lg:rounded-full"
+            >
+                <Image
+                    className="object-cover"
+                    src={urlFor(product.image).url()}
+                    fill={true}
+                    alt={product.title}
+                />
+            </div>
+            <p className="text-center leading-tight mt-1 text-yellow-900 font-semibold">
+                {product.title}
+            </p>
+        </div>
+    );
 }

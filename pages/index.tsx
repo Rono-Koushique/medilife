@@ -1,10 +1,6 @@
 import React from "react";
-import { GetServerSideProps } from "next";
 import Head from "next/head";
-import CategoryFeed from "../components/feeds/CategoryFeed";
-import PostFeed from "../components/feeds/PostFeed";
-import TopReadFeed from "../components/feeds/TopReadFeed";
-import SearchPost from "../components/inputs/SearchPost";
+import { GetServerSideProps } from "next";
 import Layout1 from "../components/layouts/Layout1";
 import { Category, Condition, Post, Product } from "../typings";
 import {
@@ -15,13 +11,13 @@ import {
     getRangedProducts,
 } from "../utils/groq";
 import Magazine from "../components/layouts/Magazine";
+import Page from "../components/containers/Page";
 import Wall from "../components/containers/Wall";
 import Frame from "../components/containers/Frame";
 import ConditionFeed from "../components/feeds/ConditionFeed";
-import Page from "../components/containers/Page";
 import ProductFeed from "../components/feeds/ProductFeed";
-import LoginFeed from "../components/feeds/LoginFeed";
-import { getSession } from "next-auth/react";
+import Size from "../components/extras/Size";
+import Layout2 from "../components/layouts/Layout2";
 
 interface Props {
     posts: Post[];
@@ -44,39 +40,37 @@ export default function Home({
                 <title>MediLife</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <LoginFeed/>
+            {/* <LoginFeed/> */}
+            <Size />
             <Layout1>
-                <Wall className="pb-4">
+                <Wall>
                     <Frame className="max-w-6xl mx-auto">
-                        <div className="grid grid-cols-7 my-14 gap-x-20">
-                            <div className="row-span-3 col-span-5 h-100 w-100">
-                                <PostFeed posts={posts} />
-                            </div>
-
-                            <div className="col-span-2 w-100 flex flex-col space-y-12">
-                                <SearchPost />
-                                <CategoryFeed categories={categories} />
-                                <TopReadFeed posts={topPosts} />
-                            </div>
-                        </div>
+                        <Layout2
+                            posts={posts}
+                            categories={categories}
+                            topPosts={topPosts}
+                        />
                     </Frame>
                 </Wall>
-                <Magazine>
-                    <ConditionFeed conditions={initialConditions} />
-                    <ProductFeed products={initialProducts} />
-                </Magazine>
+                <Wall className="bg-yellow-100 shadow-t-lg">
+                    <Frame className="max-w-6xl my-11 mx-4 lg:mx-auto">
+                        <Magazine>
+                            <ConditionFeed conditions={initialConditions} />
+                            <ProductFeed products={initialProducts} />
+                        </Magazine>
+                    </Frame>
+                </Wall>
             </Layout1>
         </Page>
     );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
     let posts = await getRangedPosts(0, 9);
     let categories = await getAllCategories();
     let topPosts = await getTopPosts(6);
     let initialConditions = await getRangedConditions(5);
     let initialProducts = await getRangedProducts(5);
-    let session = await getSession(context)
 
     return {
         props: {
@@ -85,7 +79,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             categories,
             initialConditions,
             initialProducts,
-            session
         },
     };
 };

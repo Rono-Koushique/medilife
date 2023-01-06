@@ -21,61 +21,80 @@ export default function SinglePost({ post }: Props) {
     } = post;
 
     return (
-        post && <Link href={`/post/${slug.current}`}>
-            <div
-                className="flex items-center w-full space-x-5 group
-                    hover:bg-gray-100 cursor-pointer"
-            >
-                {/* post image */}
-                <div className="w-2/5 relative self-stretch overflow-hidden">
-                    {mainImage && (
-                        <Image
-                            className="absolute top-0 left-0 object-cover group-hover:scale-105 
-                                    origin-center transition duration-200 ease-in-out"
-                            src={urlFor(mainImage).url()}
-                            fill={true}
-                            alt={title}
-                        />
-                    )}
-                </div>
-
-                {/* post description */}
-                <div className="w-3/5 flex flex-col space-y-3 my-1 px-2 py-4">
-                    <p className="font-libre text-2xl font-bold text-gray-800 cursor-pointer">
-                        {title}
-                    </p>
-
-                    {/* post info */}
-                    <div className="flex h-6 items-center space-x-2 text-sm font-opens font-light text-gray-500">
-                        <img
-                            className="h-full rounded-full filter"
-                            src={urlFor(author.image).url()}
-                            alt={author.name}
-                        />
-                        <p className="cursor-pointer hover:underline hover:underline-offset-2">
-                            {author?.name}
-                        </p>
-                        <span className="h-4 w-px bg-gray-600"></span>
-                        <ClockIcon className="h-full" />
-                        <p>{publishedAt && new Date(publishedAt).toLocaleDateString()}</p>
+        post && (
+            <Link href={`/post/${slug.current}`}>
+                <div className="w-full flex flex-col gap-y-4 group
+                            sm:flex-row sm:items-center sm:gap-y-0 sm:gap-x-4
+                            lg:hover:bg-gray-100 lg:pr-4
+                            xl:gap-x-6">
+                    {/* post image */}
+                    <div className="relative w-full h-72 overflow-hidden
+                                sm:w-1/4 sm:h-auto sm:self-stretch
+                                md:w-2/5">
+                        {mainImage && (
+                            <Image
+                                className="object-cover 
+                                        lg:group-hover:scale-105 transition duration-500 ease-in-out"
+                                src={urlFor(mainImage).url()}
+                                fill={true}
+                                alt={title}
+                            />
+                        )}
                     </div>
 
                     {/* post description */}
-                    <div className="text-lg text-gray-600">{`${description && description.substring(
-                        0,
-                        200
-                    )}...`}</div>
+                    <div className="mx-4 flex flex-col space-y-3
+                                sm:w-3/4 sm:mx-0 sm:my-2
+                                md:w-3/5">
+                        <p className="font-libre text-2xl font-bold leading-snug text-slate-900">
+                            {title}
+                        </p>
 
-                    {/* post reaction */}
-                    <div className="flex h-6 items-center space-x-1 text-sm font-opens text-gray-500">
-                        <HeartIcon className="h-full" />
-                        <p>{likeCount}</p>
-                        <span className="w-2" />
-                        <BookOpenIcon className="h-full" />
-                        <p>{readCount}</p>
+                        {/* post info */}
+                        <div className="flex items-center space-x-2 font-opens text-sm font-light text-slate-700">
+                            <Image
+                                className="h-6 w-6 rounded-full"
+                                src={urlFor(author.image).url()}
+                                width={100}
+                                height={100}
+                                alt={author.name}
+                            />
+                            <p className="cursor-pointer hover:underline hover:underline-offset-2">
+                                {author?.name}
+                            </p>
+                            <span className="h-4 w-px bg-gray-500"></span>
+                            <ClockIcon className="h-6 w-6" />
+                            <p>
+                                {publishedAt &&
+                                    new Date(publishedAt).toLocaleDateString()}
+                            </p>
+                        </div>
+
+                        {/* post description */}
+                        <div className="text-lg text-gray-600">{`${
+                            description && description.substring(0, 200)
+                        }...`}</div>
+
+                        {/* post reaction */}
+                        <div className="flex pt-2 w-full items-center justify-start gap-x-2 text-sm font-opens text-gray-500">
+                            <Link
+                                className="bg-gray-700 text-slate-100 px-4 py-2 rounded mr-2"
+                                href={`/post/${slug.current}`}
+                            >
+                                Read more
+                            </Link>
+                            <div className="flex items-center space-x-1">
+                                <BookOpenIcon className="h-8 w-8" />
+                                <p>{readCount}</p>
+                            </div>
+                            <div className="flex items-center space-x-1">
+                                <HeartIcon className="h-8 w-8" />
+                                <p>{likeCount}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </Link>
+            </Link>
+        )
     );
 }
