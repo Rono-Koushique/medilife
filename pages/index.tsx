@@ -16,7 +16,7 @@ import Wall from "../components/containers/Wall";
 import Frame from "../components/containers/Frame";
 import ConditionFeed from "../components/feeds/ConditionFeed";
 import ProductFeed from "../components/feeds/ProductFeed";
-import Size from "../components/extras/Size";
+// import Size from "../components/extras/Size";
 import Layout2 from "../components/layouts/Layout2";
 
 interface Props {

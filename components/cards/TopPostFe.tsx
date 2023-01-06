@@ -10,13 +10,19 @@ interface Props {
 export default function TopPostFe({ post }: Props) {
     const { title, mainImage, slug } = post;
     return (
-        <Link href={`/post/${slug.current}`} className="h-fit flex flex-col items-center space-y-1 cursor-pointer group rounded-md">
+        <Link
+            href={`/post/${slug.current}`}
+            className="h-fit flex flex-col items-center space-y-1 cursor-pointer group rounded-md"
+        >
             <div className="h-40 w-full relative rounded-sm overflow-hidden">
                 {mainImage && (
                     <Image
                         className="object-cover origin-center filter brightness-125 contrast-50 saturate-50 group-hover:brightness-100 group-hover:contrast-100 group-hover:saturate-100 transition duration-150 ease-in-out"
                         src={urlFor(mainImage).url()}
                         fill={true}
+                        sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                         alt=""
                     />
                 )}

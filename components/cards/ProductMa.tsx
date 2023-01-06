@@ -18,6 +18,10 @@ export default function ProductMa({ product }: Props) {
                     className="object-cover"
                     src={urlFor(product.image).url()}
                     fill={true}
+                    sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
+                    priority={false}
                     alt={product.title}
                 />
             </div>

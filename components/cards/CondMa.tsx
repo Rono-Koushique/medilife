@@ -16,6 +16,9 @@ export default function CondMa({ condition }: Props) {
                     className=" object-cover"
                     src={urlFor(condition.image).url()}
                     fill={true}
+                    sizes="(max-width: 768px) 100vw,
+                        (max-width: 1200px) 50vw,
+                        33vw"
                     alt={condition.title}
                 />
             </div>
