@@ -41,7 +41,7 @@ export default function Home({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             {/* <LoginFeed/> */}
-            <Size />
+            {/* <Size /> */}
             <Layout1>
                 <Wall>
                     <Frame className="max-w-6xl mx-auto">
