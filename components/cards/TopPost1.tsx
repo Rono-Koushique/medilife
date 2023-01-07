@@ -1,10 +1,10 @@
-import { horzInfo } from "../../typings";
+import { HorzInfo } from "../../typings";
 import { urlFor } from "../../sanity";
 import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
-    data: horzInfo;
+    data: HorzInfo;
 }
 
 export default function TopPost1({ data }: Props) {

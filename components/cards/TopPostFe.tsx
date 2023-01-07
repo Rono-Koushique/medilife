@@ -1,10 +1,10 @@
-import { horzInfo } from "../../typings";
+import { HorzInfo } from "../../typings";
 import { urlFor } from "../../sanity";
 import Link from "next/link";
 import Image from "next/image";
 
 interface Props {
-    post: horzInfo;
+    post: HorzInfo;
 }
 
 export default function TopPostFe({ post }: Props) {
