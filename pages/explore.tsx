@@ -11,8 +11,10 @@ import {
 } from "../utils/groq";
 import Wall from "../components/containers/Wall";
 import Magazine from "../components/layouts/Magazine";
-import ConditionFeed from "../components/feeds/ConditionFeed";
-import ProductFeed from "../components/feeds/ProductFeed";
+import Frame from "../components/containers/Frame";
+import MagFeed from "../components/feeds/MagFeed";
+import Condition1 from "../components/cards/Condition1";
+import Product1 from "../components/cards/Product1";
 
 interface Props {
     categories: Category[];
@@ -44,10 +46,25 @@ export default function explore({ categories, initialConditions, initialProducts
                         </div>
                     </div>
                 </Wall>
-                <Magazine>
-                    <ConditionFeed conditions={initialConditions} />
-                    <ProductFeed products={initialProducts} />
-                </Magazine>
+                <Wall className="bg-yellow-100 shadow-t-lg">
+                    <Frame className="max-w-6xl my-12 mx-4 
+                                    lg:mx-auto xl:my-14">
+                        <Magazine>
+                            <MagFeed
+                                info={initialConditions}
+                                title="Health Conditions"
+                                href="/conditions"
+                                Card={Condition1}
+                            />
+                            <MagFeed 
+                                info={initialProducts}
+                                title="Product Reviews"
+                                href="/condition"
+                                Card={Product1}
+                            />
+                        </Magazine>
+                    </Frame>
+                </Wall>
             </Layout1>
         </Page>
     );
