@@ -5,7 +5,9 @@ import Wall from "../containers/Wall";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Hamburger from "../buttons/Hamburger";
-import navLinks from "./navlinks"
+import navLinks from "./navlinks";
+import brandDark from "../../public/images/logo/brand-dark.png";
+import brandLight from "../../public/images/logo/brand-light.png";
 
 export default function Navbar1() {
     const router = useRouter();
@@ -13,29 +15,31 @@ export default function Navbar1() {
 
     return (
         <Wall className="bg-black md:bg-white">
-            <Frame className="flex items-center justify-between mx-4 my-4
-                            md:flex-col md:justify-start md:mb-0">
+            <Frame
+                className="flex items-center justify-between mx-4 my-4
+                            md:flex-col md:justify-start md:mb-0"
+            >
                 {/* brand logo */}
-                <div className="">
-                    <Link href="/" className="">
-                        {/* small screen logo */}
-                        <Image
-                            src="/images/logo/brand-light.png"
-                            className="h-16 sm:h-20 w-fit md:hidden"
-                            width={100}
-                            height={100}
-                            alt="brand"
-                        />
-                        {/* large screen logo */}
-                        <Image
-                            src="/images/logo/brand-dark.png"
-                            className="hidden md:block md:w-fit md:h-24 lg:h-28"
-                            width={100}
-                            height={100}
-                            alt="brand"
-                        />
-                    </Link>
-                </div>
+                <Link href="/" >
+                    {/* small screen logo */}
+                    <Image
+                        src={brandLight}
+                        className="h-16 w-fit
+                                sm:h-20 
+                                md:hidden"
+                        priority={false}
+                        alt="brand"
+                    />
+                    {/* large screen logo */}
+                    <Image
+                        src={brandDark}
+                        className="hidden 
+                                md:block md:w-fit md:h-24 
+                                lg:h-28"
+                        priority={false}
+                        alt="brand"
+                    />
+                </Link>
 
                 {/* hamburger icon for sidebar in small view */}
                 <div className="h-5 w-8 md:hidden">
@@ -43,9 +47,11 @@ export default function Navbar1() {
                 </div>
 
                 {/* nav links */}
-                <div className="hidden border-y border-gray-300 
+                <div
+                    className="hidden border-y border-gray-300 
                                 md:w-full md:flex md:justify-between md:px-16 md:mt-4
-                                lg:max-w-6xl lg:px-24 lg:mt-8">
+                                lg:max-w-6xl lg:px-24 lg:mt-8"
+                >
                     {navLinks.map((navlink) => (
                         <Link href={navlink.link} key={navlink.id}>
                             <p

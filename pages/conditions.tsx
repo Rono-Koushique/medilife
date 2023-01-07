@@ -1,27 +1,22 @@
 import { GetServerSideProps } from "next";
-import { Condition, Product } from "../typings";
+import { Condition, MagInfo } from "../typings";
 import Head from "next/head";
 import Layout1 from "../components/layouts/Layout1";
 import Page from "../components/containers/Page";
-import {
-    getAllConditions,
-    getRangedProducts,
-} from "../utils/groq";
+import { getAllConditions, getRangedProducts } from "../utils/groq";
 import Wall from "../components/containers/Wall";
 import Magazine from "../components/layouts/Magazine";
-import ProductFeed from "../components/feeds/ProductFeed";
 import CondPa from "../components/cards/CondPa";
+import MagFeed from "../components/feeds/MagFeed";
+import Product1 from "../components/cards/Product1";
+import Frame from "../components/containers/Frame";
 
 interface Props {
     conditions: Condition[];
-    initialConditions: Condition[];
-    initialProducts: Product[];
+    initialProducts: MagInfo[];
 }
 
-export default function healthCondition({
-    conditions,
-    initialProducts,
-}: Props) {
+export default function conditions({ conditions, initialProducts }: Props) {
     return (
         <Page>
             <Head>
@@ -45,10 +40,18 @@ export default function healthCondition({
                         </div>
                     </div>
                 </Wall>
-                <Magazine>
-                    {/* <ConditionFeed conditions={initialConditions} /> */}
-                    <ProductFeed products={initialProducts} />
-                </Magazine>
+                <Wall className="bg-yellow-100 shadow-t-lg">
+                    <Frame className="max-w-6xl my-11 mx-4 lg:mx-auto">
+                        <Magazine>
+                            <MagFeed
+                                info={initialProducts}
+                                title="Product Reviews"
+                                href="/condition"
+                                Card={Product1}
+                            />
+                        </Magazine>
+                    </Frame>
+                </Wall>
             </Layout1>
         </Page>
     );

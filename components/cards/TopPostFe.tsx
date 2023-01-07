@@ -1,14 +1,14 @@
-import { Post } from "../../typings";
+import { horzInfo } from "../../typings";
 import { urlFor } from "../../sanity";
 import Link from "next/link";
 import Image from "next/image";
 
 interface Props {
-    post: Post;
+    post: horzInfo;
 }
 
 export default function TopPostFe({ post }: Props) {
-    const { title, mainImage, slug } = post;
+    const { title, image, slug } = post;
     return (
         <Link
             href={`/post/${slug.current}`}

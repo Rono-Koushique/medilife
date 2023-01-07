@@ -12,7 +12,7 @@ const navLinks = [
     {
         id: 3,
         name: "health condition",
-        link: "/health-condition",
+        link: "/conditions",
     },
     {
         id: 4,

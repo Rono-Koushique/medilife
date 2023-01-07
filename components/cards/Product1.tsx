@@ -1,13 +1,15 @@
 import React from "react";
-import { Product } from "../../typings";
+import { MagInfo, Product } from "../../typings";
 import { urlFor } from "../../sanity";
 import Image from "next/image";
 
 interface Props {
-    product: Product;
+    data: MagInfo;
 }
 
-export default function ProductMa({ product }: Props) {
+export default function Product1({ data }: Props) {
+    const { title, image } = data
+
     return (
         <div className="flex flex-col items-center">
             <div
@@ -16,17 +18,17 @@ export default function ProductMa({ product }: Props) {
             >
                 <Image
                     className="object-cover"
-                    src={urlFor(product.image).url()}
+                    src={urlFor(image).url()}
                     fill={true}
                     sizes="(max-width: 768px) 100vw,
                         (max-width: 1200px) 50vw,
                         33vw"
                     priority={false}
-                    alt={product.title}
+                    alt={title}
                 />
             </div>
             <p className="text-center leading-tight mt-1 text-yellow-900 font-semibold">
-                {product.title}
+                {title}
             </p>
         </div>
     );

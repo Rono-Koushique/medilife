@@ -36,6 +36,24 @@ export interface Condition {
     description: string;
 }
 
+export interface HorzInfo {
+    slug?: {
+        current: string;
+    };
+    title: string;
+    image?: string;
+    mainImage?: string;
+    description: string;
+}
+
+export interface MagInfo {
+    slug?: {
+        current: string;
+    };
+    title: string;
+    image?: string;
+}
+
 export interface Product {
     title: string;
     image: string;

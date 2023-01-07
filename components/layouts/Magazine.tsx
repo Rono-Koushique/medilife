@@ -7,7 +7,7 @@ interface Props {
 
 export default function Magazine({ children }: Props) {
     return (
-        <div className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-12">
             {children}
         </div>
     );

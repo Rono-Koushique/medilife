@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { Category, Condition, Product } from "../typings";
 import Head from "next/head";
 import Layout1 from "../components/layouts/Layout1";
-import CatePa from "../components/cards/CatePa";
+import CatePa from "../components/cards/Category2";
 import Page from "../components/containers/Page";
 import {
     getAllCategories,

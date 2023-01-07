@@ -2,12 +2,16 @@ import Wall from "../containers/Wall";
 import Frame from "../containers/Frame";
 import Link from "next/link";
 import Newsletter from "../inputs/Newsletter";
+import Image from "next/image";
+import brandLight from "../../public/images/logo/brand-light.png";
 
 export default function Footer1() {
     return (
         <Wall className="bg-black">
-            <Frame className="mx-4 my-11 text-slate-100 flex flex-col 
-                            lg:max-w-6xl lg:mx-auto lg:px-4">
+            <Frame
+                className="mx-4 my-11 text-slate-100 flex flex-col 
+                            lg:max-w-6xl lg:mx-auto lg:px-4"
+            >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     {/* left side */}
                     <div className="flex flex-col space-y-4 sm:max-w-md">
@@ -28,9 +32,10 @@ export default function Footer1() {
 
                     {/* right side */}
                     <Link href="/">
-                        <img
-                            className="hidden md:block md:h-24"
-                            src="/images/logo/brand-light.png"
+                        <Image
+                            src={brandLight}
+                            className="hidden md:block md:w-fit md:h-24"
+                            priority={false}
                             alt="brand"
                         />
                     </Link>
