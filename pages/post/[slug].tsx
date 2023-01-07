@@ -1,22 +1,22 @@
 import Frame from "../../components/containers/Frame";
 import Page from "../../components/containers/Page";
 import Wall from "../../components/containers/Wall";
-import PostBody from "../../components/feeds/PostBody";
-import TopReadFeed from "../../components/feeds/TopReadFeed";
 import Layout1 from "../../components/layouts/Layout1";
 import Magazine from "../../components/layouts/Magazine";
-import ConditionFeed from "../../components/feeds/ConditionFeed";
-import ProductFeed from "../../components/feeds/ProductFeed";
 import { sanityClient } from "../../sanity";
-import { Condition, Post, Product } from "../../typings";
+import { Post, HorzInfo, MagInfo } from "../../typings";
 import { GetStaticProps } from "next";
 import { getRangedConditions, getRangedProducts } from "../../utils/groq";
+import Layout3 from "../../components/layouts/Layout3";
+import MagFeed from "../../components/feeds/MagFeed";
+import Condition1 from "../../components/cards/Condition1";
+import Product1 from "../../components/cards/Product1";
 
 interface Props {
     post: Post;
-    topPosts: Post[];
-    initialConditions: Condition[];
-    initialProducts: Product[];
+    topPosts: HorzInfo[];
+    initialConditions: MagInfo[];
+    initialProducts: MagInfo[];
 }
 
 export default function PostPage({
@@ -28,22 +28,33 @@ export default function PostPage({
     return (
         <Page>
             <Layout1>
-                <Wall className="pb-4">
+                <Wall>
                     <Frame className="max-w-6xl mx-auto">
-                        <div className="grid grid-cols-7 my-14 gap-x-20">
-                            <div className="row-span-3 col-span-5 h-100 w-100">
-                                <PostBody post={post} />
-                            </div>
-                            <div className="col-span-2 w-100 flex flex-col space-y-12">
-                                <TopReadFeed posts={topPosts} />
-                            </div>
-                        </div>
+                        <Layout3 post={post} topPosts={topPosts} />
                     </Frame>
                 </Wall>
-                <Magazine>
-                    <ConditionFeed conditions={initialConditions} />
-                    <ProductFeed products={initialProducts} />
-                </Magazine>
+
+                <Wall className="bg-yellow-100 shadow-t-lg">
+                    <Frame
+                        className="max-w-6xl my-12 mx-4 
+                                    lg:mx-auto xl:my-14"
+                    >
+                        <Magazine>
+                            <MagFeed
+                                info={initialConditions}
+                                title="Health Conditions"
+                                href="/conditions"
+                                Card={Condition1}
+                            />
+                            <MagFeed
+                                info={initialProducts}
+                                title="Product Reviews"
+                                href="/condition"
+                                Card={Product1}
+                            />
+                        </Magazine>
+                    </Frame>
+                </Wall>
             </Layout1>
         </Page>
     );
