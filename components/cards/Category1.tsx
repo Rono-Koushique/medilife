@@ -1,10 +1,10 @@
 // homepage feed card
-import { horzInfo } from "../../typings";
+import { HorzInfo } from "../../typings";
 import { urlFor } from "../../sanity";
 import Image from "next/image";
 
 interface Props {
-    data: horzInfo;
+    data: HorzInfo;
 }
 
 export default function Category1({ data }: Props) {
