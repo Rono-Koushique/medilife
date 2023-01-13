@@ -14,12 +14,11 @@ import {
     getTopPosts,
     getRangedProducts,
 } from "../utils/groq";
+import Layout2 from "../components/layouts/Layout2";
 import Magazine from "../components/layouts/Magazine";
 import Page from "../components/containers/Page";
 import Wall from "../components/containers/Wall";
 import Frame from "../components/containers/Frame";
-import Size from "../components/extras/Size";
-import Layout2 from "../components/layouts/Layout2";
 import MagFeed from "../components/feeds/MagFeed";
 import Condition1 from "../components/cards/Condition1";
 import Product1 from "../components/cards/Product1";
@@ -46,7 +45,7 @@ export default function Home({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             {/* <LoginFeed/> */}
-            <Size />
+            
             <Layout1>
                 <Wall>
                     <Frame className="max-w-6xl mx-auto">

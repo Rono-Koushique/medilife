@@ -65,3 +65,7 @@ export interface Author {
     image: string;
     bio: [object];
 }
+
+export interface Slug {
+    current: string;
+}

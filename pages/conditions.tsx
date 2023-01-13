@@ -6,7 +6,7 @@ import Page from "../components/containers/Page";
 import { getAllConditions, getRangedProducts } from "../utils/groq";
 import Wall from "../components/containers/Wall";
 import Magazine from "../components/layouts/Magazine";
-import CondPa from "../components/cards/CondPa";
+import Condition2 from "../components/cards/Condition2";
 import MagFeed from "../components/feeds/MagFeed";
 import Product1 from "../components/cards/Product1";
 import Frame from "../components/containers/Frame";
@@ -35,7 +35,7 @@ export default function conditions({ conditions, initialProducts }: Props) {
                         <div className="grid grid-cols-2 gap-10 max-w-6xl">
                             {conditions &&
                                 conditions.map((cond) => {
-                                    return <CondPa cond={cond} />;
+                                    return <Condition2 cond={cond} />;
                                 })}
                         </div>
                     </div>

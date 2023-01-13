@@ -35,11 +35,11 @@ export default function PostReply({ submitted, setSubmitted, postId }: Props) {
             {submitted ? (
                 <div>Submiting</div>
             ) : (
-                <div className="mt-12">
+                <div className="flex flex-col my-12 mx-4 gap-y-4">
                     <p className="font-libre font-bold text-xl text-slate-700">
                         Leave a Comment
                     </p>
-                    <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         {/* hidden configuration input */}
                         <input
                             {...register("_id")}
@@ -47,7 +47,8 @@ export default function PostReply({ submitted, setSubmitted, postId }: Props) {
                             name="_id"
                             value={postId}
                         />
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-4
+                                    md:grid-cols-2">
                             {/* name input */}
                             <div className="items-center comment-input-holder">
                                 <input
@@ -75,7 +76,8 @@ export default function PostReply({ submitted, setSubmitted, postId }: Props) {
                                 />
                             </div>
                             {/* website input */}
-                            <div className="col-span-2 items-center comment-input-holder">
+                            <div className="items-center comment-input-holder
+                                        md:col-span-2">
                                 <input
                                     {...register("website")}
                                     className="form-input comment-input"
@@ -88,7 +90,8 @@ export default function PostReply({ submitted, setSubmitted, postId }: Props) {
                                 />
                             </div>
                             {/* comment input */}
-                            <div className="col-span-2 items-start comment-input-holder">
+                            <div className="items-start comment-input-holder
+                                        md:col-span-2">
                                 <textarea
                                     {...register("comment")}
                                     className="form-input h-fit leading-relaxed comment-input"

@@ -3,14 +3,19 @@ import Page from "../../components/containers/Page";
 import Wall from "../../components/containers/Wall";
 import Layout1 from "../../components/layouts/Layout1";
 import Magazine from "../../components/layouts/Magazine";
-import { sanityClient } from "../../sanity";
 import { Post, HorzInfo, MagInfo } from "../../typings";
 import { GetStaticProps } from "next";
-import { getRangedConditions, getRangedProducts } from "../../utils/groq";
+import {
+    getCurrentPost,
+    getRangedConditions,
+    getRangedProducts,
+    getTopPosts,
+} from "../../utils/groq";
 import Layout3 from "../../components/layouts/Layout3";
 import MagFeed from "../../components/feeds/MagFeed";
 import Condition1 from "../../components/cards/Condition1";
 import Product1 from "../../components/cards/Product1";
+import { sanityClient } from "../../sanity";
 
 interface Props {
     post: Post;
@@ -81,47 +86,11 @@ export async function getStaticPaths() {
     };
 }
 
+// search for post from current slug
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    // search for post from current slug
-    const post = await sanityClient.fetch(
-        `*[_type == "post" && slug.current == $slug][0]{
-        _id,
-        _createdAt,
-        publishedAt,
-        title,
-        author -> {
-            name,
-            image,
-            bio
-        },
-        categories[] -> {
-            title      
-        },
-        'comments': *[
-            _type == "comment" && 
-            post._ref == ^._id &&
-            approved == true
-        ],
-        description,
-        mainImage,
-        slug,
-        likeCount,
-        readCount,
-        body
-    }`,
-        {
-            slug: params?.slug,
-        }
-    );
-
-    const topPosts =
-        await sanityClient.fetch(`(*[_type == "post"] | order(readCount desc))[0...6] {
-        _id,
-        title,
-        mainImage,
-        slug,
-    }`);
-
+    const slug = params?.slug;
+    const post = !Array.isArray(slug) && (await getCurrentPost(slug));
+    let topPosts = await getTopPosts(6);
     let initialConditions = await getRangedConditions(5);
     let initialProducts = await getRangedProducts(5);
 

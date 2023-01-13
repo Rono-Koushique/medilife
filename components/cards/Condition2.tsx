@@ -6,7 +6,7 @@ interface Props {
     cond: Condition;
 }
 
-export default function CondPa({ cond }: Props) {
+export default function Condition2({ cond }: Props) {
     return (
         <div
             className="cursor-pointer flex items-center transition-all duration-50 p-4 rounded-lg rounded-tl-full rounded-bl-full overflow-hidden

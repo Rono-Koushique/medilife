@@ -12,11 +12,11 @@ interface Props {
 export default function Layout2({ post, topPosts }: Props) {
     return (
         <div
-            className="mb-14 sm:mx-4 sm:my-8
+            className="mt-4 mb-14 sm:mx-4 sm:my-8
                     lg:my-10 lg:flex lg:gap-x-10
                     xl:mx-0 xl:my-10 xl:mb-14 xl:gap-x-14"
         >
-            <div className="lg:w-[80%]">
+            <div className="w-[100%] lg:w-[80%]">
                 <PostBody post={post} />
             </div>
 

@@ -8,6 +8,7 @@ import Hamburger from "../buttons/Hamburger";
 import navLinks from "./navlinks";
 import brandDark from "../../public/images/logo/brand-dark.png";
 import brandLight from "../../public/images/logo/brand-light.png";
+import SideBar from "../layouts/SideBar";
 
 export default function Navbar1() {
     const router = useRouter();
@@ -42,8 +43,9 @@ export default function Navbar1() {
                 </Link>
 
                 {/* hamburger icon for sidebar in small view */}
-                <div className="h-5 w-8 md:hidden">
+                <div className={`h-fit w-fit md:hidden`}>
                     <Hamburger open={open} setOpen={setOpen} />
+                    <SideBar open={open} setOpen={setOpen}/>
                 </div>
 
                 {/* nav links */}

@@ -1,4 +1,5 @@
 import { sanityClient } from "../sanity";
+import { Slug } from "../typings";
 
 export async function getRangedPosts(start: number, end: number) {
     let posts =
@@ -37,8 +38,9 @@ export async function getAllConditions() {
     return conditions;
 }
 
-export async function getRangedConditions(count:number) {
-    let conditions = await sanityClient.fetch(`*[_type == "condition"][0...${count.toString()}] {
+export async function getRangedConditions(count: number) {
+    let conditions =
+        await sanityClient.fetch(`*[_type == "condition"][0...${count.toString()}] {
         title,
         image,
         description
@@ -46,8 +48,9 @@ export async function getRangedConditions(count:number) {
     return conditions;
 }
 
-export async function getRangedProducts(count:number) {
-    let products = await sanityClient.fetch(`*[_type == "product"][0...${count.toString()}] {
+export async function getRangedProducts(count: number) {
+    let products =
+        await sanityClient.fetch(`*[_type == "product"][0...${count.toString()}] {
         title,
         image,
         description
@@ -55,7 +58,7 @@ export async function getRangedProducts(count:number) {
     return products;
 }
 
-export async function getTopPosts(count:number) {
+export async function getTopPosts(count: number) {
     const topPosts =
         await sanityClient.fetch(`(*[_type == "post"] | order(readCount desc))[0..${count.toString()}] {
         _id,
@@ -64,4 +67,38 @@ export async function getTopPosts(count:number) {
         slug,
     }`);
     return topPosts;
+}
+
+export async function getCurrentPost(slug?: string) {
+    const post = await sanityClient.fetch(
+        `*[_type == "post" && slug.current == $slug][0]{
+        _id,
+        _createdAt,
+        publishedAt,
+        title,
+        author -> {
+            name,
+            image,
+            bio
+        },
+        categories[] -> {
+            title      
+        },
+        'comments': *[
+            _type == "comment" && 
+            post._ref == ^._id &&
+            approved == true
+        ],
+        description,
+        mainImage,
+        slug,
+        likeCount,
+        readCount,
+        body
+    }`,
+        {
+            slug,
+        }
+    );
+    return post;
 }

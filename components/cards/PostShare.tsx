@@ -2,7 +2,8 @@ import { Icon } from "@iconify/react";
 
 export default function PostShare() {
     return (
-        <div className="flex items-center w-full border-y-2 py-2 justify-between mt-12">
+        <div className="flex items-center border-y-2 py-2 justify-between mt-12 mx-4
+                    sm:mx-0">
             {/* share hub */}
             <div className="flex items-center space-x-2">
                 {/* title */}

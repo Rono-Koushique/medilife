@@ -26,7 +26,7 @@ export default function Layout2({ posts, categories, topPosts }: Props) {
                 className="hidden
                         lg:flex lg:flex-col lg:w-[20%] lg:gap-y-10"
             >
-                <SearchPost />
+                <SearchPost className="py-2"/>
                 <HorzFeed
                     className="gap-y-1 mt-4"
                     info={categories}
